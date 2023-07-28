@@ -55,7 +55,7 @@ export default {
       this.password=this.password+val;
       if(this.$store.state.username != ""){
         this.secret=await this.$refs.childSupa.getSecretPW(this.$store.state.username);
-
+        await this.$refs.childSupa.nameList(this.$store.state.username);
         if(this.password.includes(this.secret)){
           this.$router.push('/mypage')
         }

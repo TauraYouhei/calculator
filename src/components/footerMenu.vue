@@ -40,6 +40,7 @@ export default {
 }
 
 #fixed-footer-menu ul {
+  height: 80px;
   display: flex;
   list-style: none;
   padding: 0;

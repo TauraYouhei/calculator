@@ -9,7 +9,7 @@
             <main class="mainView">
                 <!-- ▼会話エリア scrollを外すと高さ固定解除 -->
                 <div class="contents" id="scroll">
-                    <div v-for="(list, index) in talkItems" :key="list" v-bind:class="[index == talkItems.length-1 ? 'finish' : 'scroll_inner']">>
+                    <div v-for="(list, index) in talkItems" :key="list" v-bind:class="[index == talkItems.length-1 ? 'finish' : 'scroll_inner']">
                         <div class="hiduke" v-if="list.firstMessage=='true'"><p>{{ list.time.substr( 0, 10).replace(/-/g, '/') }}</p></div>
 
                         <!-- 相手の吹き出し -->
@@ -212,7 +212,7 @@ input {
     -webkit-align-items:flex-end;
     align-items:flex-end;
     color: white;
-    font-size: 4px;
+    font-size: 14px;
 
 }
 .line_right{
@@ -318,10 +318,11 @@ footer {
 }
 .hiduke p {
     border: 1px solid #7e7e7e;
-	border-radius: 50%;
-    font-size: 7px;
+    font-size: 11px;
     color: white;
     width: 80px;
     margin:auto;
+    margin-bottom: 5px;
+    border-radius: 10px;
 }
 </style>
