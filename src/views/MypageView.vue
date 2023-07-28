@@ -7,10 +7,6 @@
             <main class="mainView">
               <br><br><br><h2>友だちリスト</h2>
               <br><input type="text" placeholder="検索" v-model="keyword" class="search">
-              <label class="upload-label" v-show="this.flag">画像を選択
-                <input id="file" type="file" ref="urlGet" @change="imageChange">
-                <img :src="dataUrl" />
-              </label>
               <div class="friend" v-for="list in reverseItems" :key="list">
                 <button class="profile" v-on:click="talkView(list.name)"><img src="https://vkmpvtwcwhsdgpslcbhm.supabase.co/storage/v1/object/public/calculator/profileImage/unknown.png" alt="" >
                 {{ list.name }}
@@ -38,17 +34,10 @@ export default {
           keyword: "",
           fileName: "",
           interval:"",
-          dataUrl: "",
           flag: false,
         }
     },
     methods: {
-      async imageChange() {
-        const input = this.$refs.urlGet.files[0];
-
-        this.dataUrl = await this.$refs.childSupa.profileImageUpload(input);
-        document.getElementById("file").value = '';
-      },
       dataUpdate(){
         if(this.$route.path=='/mypage'){
           this.$refs.childSupa.nameList(this.$store.state.username);
