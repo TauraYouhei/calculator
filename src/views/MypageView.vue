@@ -7,7 +7,7 @@
             <main class="mainView">
               <br><br><br><h2>友だちリスト</h2>
               <br><input type="text" placeholder="検索" v-model="keyword" class="search">
-              <label class="upload-label">画像を選択
+              <label class="upload-label" v-show="this.flag">画像を選択
                 <input id="file" type="file" ref="urlGet" @change="imageChange">
                 <img :src="dataUrl" />
               </label>
@@ -39,6 +39,7 @@ export default {
           fileName: "",
           interval:"",
           dataUrl: "",
+          flag: false,
         }
     },
     methods: {
