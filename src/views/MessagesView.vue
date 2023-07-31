@@ -1,11 +1,11 @@
 <template>
-<transition appear>
     <div>
             <supabase-function ref="childSupa" />
             <header class="hd">
               <div class="backBtn"><router-link to="/talkList" class="router">＜</router-link>{{this.result}}</div>
               <a id="Name">{{ $store.state.friendname }}</a>
             </header>
+            <transition appear>
             <main class="mainView">
                 <!-- ▼会話エリア scrollを外すと高さ固定解除 -->
                 <div class="contents" id="scroll">
@@ -31,11 +31,12 @@
                     </div>
                 </div>
             </main>
+            </transition>
             <footer><input type="text" v-model="message" placeholder="メッセージを入力">
                 <button class="round_arrow" v-on:click="messageInput">＞</button>
             </footer>
+            <button class="bottom" v-on:click="pagebottom">↓</button>
         </div>
-</transition>
 </template>
 
 <script>
@@ -126,6 +127,7 @@ export default {
                 clearInterval(this.interval);
             }
         },
+        
         messageTimeInput(time){
             this.$refs.childSupa.lastMessageTimeInput(this.$store.state.username, this.$store.state.friendname, time);
         },
@@ -170,7 +172,7 @@ input {
 }
 
 .contents {
-  padding-bottom: 70px;
+  padding-bottom: 110px;
   width: 100%;
 }
 
@@ -287,6 +289,7 @@ footer {
   background-color: #292929;
   color: white;
   text-align: center;
+  height: 75px;
 }
 
 .mainView h2{
@@ -324,5 +327,18 @@ footer {
     margin:auto;
     margin-bottom: 5px;
     border-radius: 10px;
+}
+
+.bottom {
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    z-index: 10000;
+    color: rgb(218, 212, 212);
+    background-color: #666060;
+    border: none;
+    border-radius: 5px;
 }
 </style>
